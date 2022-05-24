@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function getid(){
+      var element1=document.getElementById('int1')
+      var element2=document.getElementById('int2')
+
+      var result=parseInt(element1.value)+parseInt(element2.value)
+
+      var result_text=document.getElementById('result')
+      result_text.textContent=result
+    }
+    </script>
+    <input id="int1"type="text"name="" value="">
+    <input id="int2"type="text"name="" value="">
+    <button onclick="getid()" type="button">計算</button>
+    <hr>
+    計算結果
+    <h3 id="result"></h3>
+  </body>
+</html>
