@@ -24,15 +24,20 @@
         localStorage.setItem("ls_count",unchi_count);
       }
 
-      function unchi_Click(num){
+      setInterval(screen_update,1);
+      function screen_update(){
         var count_text=document.getElementById('unchi_count')
-        unchi_count=unchi_count+num;
         count_text.textContent=unchi_count;
+      }
+
+      function unchi_Click(num){
+        unchi_count=unchi_count+num;
+
      }
      function cursor(){
        if (unchi_count>=100) {
          unchi_count-=100;
-         setInterval("unchi_Click(1)",1000)
+         setInterval("unchi_Click(1)",10)
        }
      }
      function grandma(){
@@ -60,7 +65,7 @@
        if (unchi_count>=90000000000000) {
          unchi_count-=90000000000000;
 
-       setInterval("unchi_Click(9999999)",1)
+       setInterval("unchi_Click(999999)",1)
      }
    }
 
