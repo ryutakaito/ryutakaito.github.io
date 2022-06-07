@@ -19,12 +19,16 @@
   </head>
   <body>
     <script type="text/javascript">
+    /*インターバルIDの格納先
+    */
+    let event_ids=[];
 
     let ls_count=localStorage.getItem("ls_count");
     if (ls_count){
       unchi_count=parseInt(ls_count);
+
     }else {
-      unchi_count=1;
+      unchi_count=0;
     }
 
       setInterval(save_action,1000)
@@ -54,35 +58,43 @@
      function cursor(){
        if (unchi_count>=100) {
          unchi_count-=100;
-         setInterval("unchi_Click(1)",10)
+         let r_id=setInterval("unchi_Click(1)",100000);
+         event_ids.push(r_id);
        }
      }
-     function grandma(){
-       if (unchi_count>=10000) {
-         unchi_count-=10000;
+     function sell_cursor(){
+       if (event_ids.length>0) {
+         let r_id=event_ids.pop();
+         clearInterval(r_id);
+       }
+      }
 
-       setInterval("unchi_Click(10)",100)
+     function grandma(){
+       if (unchi_count>=1000) {
+         unchi_count-=1000;
+       setInterval("unchi_Click(10)",10000)
+
           }
         }
      function farm(){
-       if (unchi_count>=1000000) {
-         unchi_count-=1000000;
+       if (unchi_count>=1000) {
+         unchi_count-=1000;
+      setInterval("unchi_Click(100)",1000)
 
-       setInterval("unchi_Click(100)",10)
      }
    }
       function main(){
-        if (unchi_count>=100000000) {
-          unchi_count-=100000000;
+        if (unchi_count>=1000) {
+          unchi_count-=1000;
+        setInterval("unchi_Click(1000)",100)
 
-        setInterval("unchi_Click(1000)",1)
       }
     }
      function factory(){
-       if (unchi_count>=90000000000000) {
-         unchi_count-=90000000000000;
+       if (unchi_count>=90000) {
+         unchi_count-=90000;
+       setInterval("unchi_Click(99999)",10)
 
-       setInterval("unchi_Click(999999)",1)
      }
    }
 
@@ -99,12 +111,21 @@
     <p class="animate__animated animate__bounce">製作途中</p>
   </div>
   <div class="item3">
+    購入
+    <p>
+        <li onclick="cursor()">カーソル</li>
+        <li onclick="grandma()">グランマ</li>
+        <li onclick="farm()">ファーム</li>
+        <li onclick="main()">マイン</li>
+        <li onclick="factory()">ファクトリー</li>
+    </p>
+    売却
   <p>
-      <li onclick="cursor()">カーソル</li>
-      <li onclick="grandma()">グランマ</li>
-      <li onclick="farm()">ファーム</li>
-      <li onclick="main()">マイン</li>
-      <li onclick="factory()">ファクトリー</li>
+      <li onclick="sell_cursor()">カーソル</li>
+      <li onclick="sell_grandma()">グランマ</li>
+      <li onclick="sell_farm()">ファーム</li>
+      <li onclick="sell_main()">マイン</li>
+      <li onclick="sell_factory()">ファクトリー</li>
   </p>
   </div>
   </body>
