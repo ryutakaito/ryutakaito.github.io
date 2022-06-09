@@ -12,7 +12,7 @@
     background-size: cover;}
     img{width:400px;}
     .container{display:flex;}
-    .item1{flex-grow:2; }
+    .item1{flex-grow:2;}
     .item1{flex-grow:4; }
     .item1{flex-grow:3; }
     </style>
@@ -45,7 +45,6 @@
         clearInterval(su_event_id)
       }
 
-
       function unchi_Click(num){
         var unchisan=document.getElementById('unchisan');
         unchisan.classList.remove('animate__animated','animate__shakeX');
@@ -58,7 +57,7 @@
      function cursor(){
        if (unchi_count>=100) {
          unchi_count-=100;
-         let r_id=setInterval("unchi_Click(1)",100000);
+         let r_id=setInterval("unchi_Click(1)",1000);
          event_ids.push(r_id);
        }
      }
@@ -72,31 +71,37 @@
      function grandma(){
        if (unchi_count>=1000) {
          unchi_count-=1000;
-       setInterval("unchi_Click(10)",10000)
+       setInterval("unchi_Click(10)",100)
 
           }
         }
      function farm(){
        if (unchi_count>=1000) {
          unchi_count-=1000;
-      setInterval("unchi_Click(100)",1000)
+      setInterval("unchi_Click(100)",10)
 
      }
    }
       function main(){
         if (unchi_count>=1000) {
           unchi_count-=1000;
-        setInterval("unchi_Click(1000)",100)
+        setInterval("unchi_Click(1000)",1)
 
       }
     }
      function factory(){
        if (unchi_count>=90000) {
          unchi_count-=90000;
-       setInterval("unchi_Click(99999)",10)
+       setInterval("unchi_Click(99999)",1)
 
      }
    }
+   function buildings_switch() {
+      let list_ele=document.getElementById('buildings_buy');
+      list_ele.style.display='none';
+   }
+
+
 
     </script>
     <div class="container">
@@ -111,7 +116,9 @@
     <p class="animate__animated animate__bounce">製作途中</p>
   </div>
   <div class="item3">
-    購入
+
+    <div id="buildings_buy">
+    <span onclick="buildings_switch()">購入</span>
     <p>
         <li onclick="cursor()">カーソル</li>
         <li onclick="grandma()">グランマ</li>
@@ -119,7 +126,11 @@
         <li onclick="main()">マイン</li>
         <li onclick="factory()">ファクトリー</li>
     </p>
-    売却
+  </div>
+
+  <div id="buildings_sell">
+  <span onclick="buildings_switch()">売却</span>
+
   <p>
       <li onclick="sell_cursor()">カーソル</li>
       <li onclick="sell_grandma()">グランマ</li>
@@ -127,6 +138,8 @@
       <li onclick="sell_main()">マイン</li>
       <li onclick="sell_factory()">ファクトリー</li>
   </p>
+</div>
+
   </div>
   </body>
 </html>
